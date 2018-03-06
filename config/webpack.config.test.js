@@ -4,7 +4,7 @@ const SourceMapDevToolPlugin = require("webpack/lib/SourceMapDevToolPlugin")
 const env = require("../environment/dev.env")
 
 webpackConfig.module.rules = [{
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "awesome-typescript-loader",
         query: {
@@ -41,7 +41,7 @@ webpackConfig.module.rules = [{
 webpackConfig.plugins = [...webpackConfig.plugins,
     new SourceMapDevToolPlugin({
         filename: null, // if no value is provided the sourcemap is inlined
-        test: /\.(ts|js)($|\?)/i
+        test: /\.(tsx?|js)($|\?)/i
     }),
     new DefinePlugin({
         "process.env": env

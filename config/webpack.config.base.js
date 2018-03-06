@@ -14,20 +14,23 @@ let config = {
     },
     devtool: "source-map",
     resolve: {
-        extensions: [".ts", ".js", ".html"],
+        extensions: [".ts", ".tsx", ".js", ".html"],
         alias: {
             "vue$": "vue/dist/vue.esm.js"
         }
     },
     module: {
         rules: [{
-                test: /\.ts$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
                 enforce: "pre",
-                loader: "tslint-loader"
+                loader: "tslint-loader",
+                options: {
+                    emitErrors: true
+                }
             },
             {
-                test: /\.ts$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
                 loader: "awesome-typescript-loader"
             },

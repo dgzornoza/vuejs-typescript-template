@@ -11,23 +11,10 @@
             "taskName": "build",
             "args": [
                 "run",
-                "rebuild-debug"
+                "build"
             ],
             // Watching
-            "isWatching": false,
-            // Show the output window only if unrecognized errors occur.
-            "showOutput": "always",
-            // Usar los mismos que la tarea 'build watch' si se quieren usar
-            "problemMatcher": []
-        },
-        {
-            "taskName": "rebuild",
-            "args": [
-                "run",
-                "build-debug"
-            ],
-            // Watching
-            "isWatching": false,
+            "isBackground": false,
             // Show the output window only if unrecognized errors occur.
             "showOutput": "always",
             // Usar los mismos que la tarea 'build watch' si se quieren usar
@@ -37,12 +24,12 @@
             "taskName": "watch",
             "args": [
                 "run",
-                "watch"
+                "debug"
             ],
             // Make this the default build command.
             "isBuildCommand": true,
             // Watching
-            "isWatching": true,
+            "isBackground": true,
             // Show the output window only if unrecognized errors occur.
             "showOutput": "always",
             // Use the standard less compilation problem matcher.

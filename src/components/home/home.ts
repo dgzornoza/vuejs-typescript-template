@@ -1,6 +1,4 @@
 import { Component, Vue } from "vue-property-decorator"
-
-
 import "./home.scss"
 
 @Component({
@@ -12,6 +10,6 @@ export class HomeComponent extends Vue {
 
   package: string = "vue-webpack-typescript"
   repo: string = "https://github.com/ducksoupdev/vue-webpack-typescript"
-  mode: string = process.env.ENV
+  mode: string | undefined = process.env.ENV
 
 }
