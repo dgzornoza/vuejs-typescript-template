@@ -1,49 +1,58 @@
-import Vue, { Component } from "vue"
-import { SinonSpy } from "sinon"
-import _ from "lodash"
-import { ILogger } from "./log"
+import Vue, { Component } from "vue";
+import { SinonSpy } from "sinon";
+import _ from "lodash";
+import { ILogger } from "src/util/log";
 
 export interface IComponents {
-  [key: string]: Component
+    [key: string]: Component;
 }
 
 export class ComponentTest {
 
-  public vm: Vue
+    public vm: Vue;
 
-  constructor (private template: string, private components: IComponents) {
-  }
+    private _template: string;
+    private _components: IComponents;
 
-  public createComponent (createOptions?: any): void {
-    let options = {
-      template: this.template,
-      components: this.components
+    constructor(template: string, components: IComponents) {
+        this._template = template;
+        this._components = components;
     }
-    if (createOptions) _.merge(options, createOptions)
-    this.vm = new Vue(options).$mount()
-  }
 
-  public async execute (callback: (vm: Vue) => Promise<void> | void): Promise<void> {
-    await Vue.nextTick()
-    await callback(this.vm)
-  }
+    public createComponent(createOptions?: any): void {
+        const options: any = {
+            template: this._template,
+            components: this._components
+        };
+
+        if (createOptions) { _.merge(options, createOptions); }
+        this.vm = new Vue(options).$mount();
+    }
+
+    public async execute(callback: (vm: Vue) => Promise<void> | void): Promise<void> {
+        await Vue.nextTick();
+        await callback(this.vm);
+    }
 
 }
 
 export class MockLogger implements ILogger {
 
-  constructor (private loggerSpy: SinonSpy) {
-  }
+    private _loggerSpy: SinonSpy;
 
-  info (msg: any) {
-    this.loggerSpy(msg)
-  }
+    constructor(loggerSpy: SinonSpy) {
+        this._loggerSpy = loggerSpy;
+    }
 
-  warn (msg: any) {
-    this.loggerSpy(msg)
-  }
+    public info(msg: any): any {
+        this._loggerSpy(msg);
+    }
 
-  error (msg: any) {
-    this.loggerSpy(msg)
-  }
+    public warn(msg: any): any {
+        this._loggerSpy(msg);
+    }
+
+    public error(msg: any): any {
+        this._loggerSpy(msg);
+    }
 }

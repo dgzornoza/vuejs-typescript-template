@@ -1,41 +1,44 @@
-import { Component, Vue } from "vue-property-decorator"
-import axios, { AxiosResponse } from "axios"
+import { Component, Vue } from "vue-property-decorator";
+import axios, { AxiosResponse, AxiosStatic } from "axios";
 
 
-interface UserResponse {
-  id: string
-  name: string
+interface IUserResponse {
+    id: string;
+    name: string;
 }
 
 @Component({
-  template: require("./list.html"),
-  components: {
-  }
+    /* tslint:disable no-require-imports */
+    template: require("./list.html"),
+    /* tslint:enable no-require-imports */
+    components: {
+    }
 })
 export class ListComponent extends Vue {
 
-  items: UserResponse[] = []
-  protected axios
-  private url = "https://jsonplaceholder.typicode.com/users"
+    public items: IUserResponse[] = [];
+    protected axios: AxiosStatic;
+    private url: string = "https://jsonplaceholder.typicode.com/users";
 
-  constructor () {
-    super()
-    this.axios = axios
-  }
-
-  mounted () {
-    this.$nextTick(() => {
-      this.loadItems()
-    })
-  }
-
-  private loadItems () {
-    if (!this.items.length) {
-      this.axios.get(this.url).then((response: AxiosResponse) => {
-        this.items = response.data
-      }, (error) => {
-        console.error(error)
-      })
+    constructor() {
+        super();
+        this.axios = axios;
     }
-  }
+
+    public mounted(): void {
+        this.$nextTick(() => {
+            this.loadItems();
+        });
+    }
+
+    private loadItems(): void {
+        if (!this.items.length) {
+            this.axios.get(this.url).then((response: AxiosResponse) => {
+                this.items = response.data;
+            },
+            (_error: any) => {
+                // console.error(error);
+            });
+        }
+    }
 }

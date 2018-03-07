@@ -17,7 +17,11 @@ let config = {
         extensions: [".ts", ".tsx", ".js", ".html"],
         alias: {
             "vue$": "vue/dist/vue.esm.js"
-        }
+        },
+        modules: [
+            "node_modules",
+            helpers.root(".")
+        ]
     },
     module: {
         rules: [{

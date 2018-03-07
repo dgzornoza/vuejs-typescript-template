@@ -1,11 +1,11 @@
-import Vue from "vue"
+import Vue from "vue";
 // import { makeHot, reload } from "./util/hot-reload"
-import { createRouter } from "./router"
+import { createRouter } from "src/router";
 
 // const navbarComponent = () => import("./components/navbar").then(({ NavbarComponent }) => NavbarComponent)
 // const navbarComponent = () => import(/* webpackChunkName: "navbar" */"./components/navbar").then(({ NavbarComponent }) => NavbarComponent)
 
-import "./sass/main.scss"
+import "src/sass/main.scss";
 
 // if (process.env.ENV === "development" && module.hot) {
 //   const navbarModuleId = "./components/navbar"
@@ -23,4 +23,4 @@ new Vue({
   components: {
     // "navbar": navbarComponent
   }
-})
+});

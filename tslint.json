@@ -1,7 +1,47 @@
 {
-    "extends": "tslint-config-standard",
+    "extends": "tslint-microsoft-contrib",
     "rules": {
-        "quotemark": true,
-        "no-consecutive-blank-lines": false
+        "import-name": false,
+        "max-line-length": [
+            true,
+            160
+        ],
+        "missing-jsdoc": false,
+        "no-any": false,
+        "no-implicit-dependencies": false,
+        "no-single-line-block-comment": false,
+        "no-submodule-imports": false,
+        "ordered-imports": false,
+        "quotemark": [
+            true,
+            "double",
+            "avoid-escape"
+        ],
+        "no-consecutive-blank-lines": false,
+        "variable-name": [
+            true,
+            "check-format",
+            "allow-leading-underscore",
+            "ban-keywords"
+        ],
+        "no-angle-bracket-type-assertion": true,
+        "prefer-type-cast": false,
+        "export-name": false,
+        "no-reserved-keywords": false,
+        "no-import-side-effect": false,
+        "align": [
+            true,
+            "parameters",
+            "statements"
+        ],
+        "typedef": [
+            true,
+            "call-signature",
+            "parameter",
+            "arrow-parameter",
+            "property-declaration",
+            "variable-declaration",
+            "member-variable-declaration"
+        ]
     }
 }

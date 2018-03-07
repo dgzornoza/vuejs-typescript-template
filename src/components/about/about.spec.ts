@@ -1,35 +1,40 @@
-import { spy, assert } from "sinon"
-import { expect } from "chai"
-import Component from "vue-class-component"
-import { ComponentTest, MockLogger } from "../../util/component-test"
-import { AboutComponent } from "./about"
+import { AboutComponent } from "src/components/about/about";
+import Sinon from "sinon";
+import { ComponentTest, MockLogger } from "src/util/component-test";
+import { expect } from "chai";
+import Component from "vue-class-component";
+import Vue from "vue";
 
-let loggerSpy = spy()
+/* tslint:disable mocha-no-side-effect-code */
+const loggerSpy: Sinon.SinonSpy = Sinon.spy();
+/* tslint:disable mocha-no-side-effect-code */
 
 @Component({
-  template: require("./about.html")
+    /* tslint:disable no-require-imports */
+    template: require("./about.html")
+    /* tslint:disable no-require-imports */
 })
 class MockAboutComponent extends AboutComponent {
-  constructor () {
-    super()
-    this.logger = new MockLogger(loggerSpy)
-  }
+    constructor() {
+        super();
+        this.logger = new MockLogger(loggerSpy);
+    }
 }
 
 describe("About component", () => {
-  let directiveTest: ComponentTest
+    let directiveTest: ComponentTest;
 
-  beforeEach(() => {
-    directiveTest = new ComponentTest("<div><about></about></div>", { "about": MockAboutComponent })
-  })
+    beforeEach(() => {
+        directiveTest = new ComponentTest("<div><about></about></div>", { about: MockAboutComponent });
+    });
 
-  it("should render correct contents", async () => {
-    debugger
-    directiveTest.createComponent()
+    it("should render correct contents", async () => {
+        directiveTest.createComponent();
 
-    await directiveTest.execute((vm) => {
-      expect(vm.$el.querySelector(".repo-link")!.getAttribute("href")).to.equal("https://github.com/ducksoupdev/vue-webpack-typescript")
-      assert.calledWith(loggerSpy, "about is ready!")
-    })
-  })
-})
+        await directiveTest.execute((vm: Vue) => {
+            const element: Element = vm.$el.querySelector(".repo-link") as Element;
+            expect(element && element.getAttribute("href")).to.equal("https://github.com/dgzornoza/vuejs-typescript-template");
+            Sinon.assert.calledWith(loggerSpy, "about is ready!");
+        });
+    });
+});
