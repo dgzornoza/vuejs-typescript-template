@@ -1,6 +1,6 @@
-# my-project
+# vuejs-typescript-template
 
-> A Vue.js project
+> A Vue.js project in typescript
 
 ## Build Setup
 

@@ -8,8 +8,8 @@ import "./home.scss"
 })
 export class HomeComponent extends Vue {
 
-  package: string = "vue-webpack-typescript"
-  repo: string = "https://github.com/ducksoupdev/vue-webpack-typescript"
+  package: string = "vuejs-typescript-template"
+  repo: string = "https://github.com/dgzornoza/vuejs-typescript-template"
   mode: string | undefined = process.env.ENV
 
 }
