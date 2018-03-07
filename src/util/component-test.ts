@@ -1,7 +1,7 @@
-import Vue, { Component } from 'vue'
-import { SinonSpy } from 'sinon'
-import _ from 'lodash'
-import { ILogger } from './log'
+import Vue, { Component } from "vue"
+import { SinonSpy } from "sinon"
+import _ from "lodash"
+import { ILogger } from "./log"
 
 export interface IComponents {
   [key: string]: Component

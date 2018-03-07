@@ -6,6 +6,15 @@ const env = require("../environment/dev.env")
 webpackConfig.module.rules = [{
         test: /\.tsx?$/,
         exclude: /node_modules/,
+        enforce: "pre",
+        loader: "tslint-loader",
+        options: {
+            emitErrors: true
+        }
+    },
+    {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
         loader: "awesome-typescript-loader",
         query: {
             compilerOptions: {
